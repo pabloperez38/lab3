@@ -34,7 +34,6 @@
                 <li class="nav-item">
                     <a href="productos" class="nav-link">
                         <i class="nav-icon fab fa-product-hunt"></i>
-
                         <p>
                             Productos
                         </p>
@@ -43,9 +42,16 @@
                 <li class="nav-item">
                     <a href="categorias" class="nav-link">
                         <i class="nav-icon fas fa-list"></i>
-
                         <p>
                             Categorías
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="configuracion" class="nav-link">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>
+                            Configuración
                         </p>
                     </a>
                 </li>
@@ -57,7 +63,6 @@
                         </p>
                     </a>
                 </li>
-
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

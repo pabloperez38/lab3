@@ -10,7 +10,7 @@ $categorias = CategoriasControlador::ctrMostrarCategorias(null, null);
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Home</h1>
+                    <h1>Editar producto</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -25,8 +25,6 @@ $categorias = CategoriasControlador::ctrMostrarCategorias(null, null);
     <!-- Main content -->
     <section class="content">
 
-        <h1>Editar producto</h1>
-
         <?php
 
         $producto = ProductosControlador::ctrMostrarProductos("id_producto", $_GET["id_producto"]);
@@ -35,12 +33,6 @@ $categorias = CategoriasControlador::ctrMostrarCategorias(null, null);
 
         <form id="editarProducto" method="post" enctype="multipart/form-data">
 
-            <div class="modal-header bg-warning">
-                <h4 class="modal-title">Editar producto</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
             <div class="modal-body">
 
                 <div class="form-group">
@@ -94,11 +86,7 @@ $categorias = CategoriasControlador::ctrMostrarCategorias(null, null);
                 <button type="sumbit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar</button>
             </div>
 
-
-
         </form>
-</div>
 
-</section>
-<!-- /.content -->
+    </section>
 </div>

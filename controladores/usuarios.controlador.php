@@ -15,8 +15,7 @@ class UsuariosControlador
 
     public function ctrAgregarUsuario()
     {
-        if (isset($_POST["nombre_usuario"]))
-        {
+        if (isset($_POST["nombre_usuario"])) {
 
             $tabla = "usuarios";
 
@@ -39,8 +38,7 @@ class UsuariosControlador
 
             $respuesta = UsuariosModelo::mdlAgregarUsuario($tabla, $datos);
 
-            if ($respuesta == "ok")
-            {
+            if ($respuesta == "ok") {
                 echo '<script>
                     fncSweetAlert("success","El usuario se agregó correctamente", "' . $url . '"
                     );
@@ -56,11 +54,9 @@ INGRESO DE USUARIO
     static public function ctrIngresoUsuario()
     {
         //Campo del formulario login
-        if (isset($_POST["email_usuario"]))
-        {
+        if (isset($_POST["email_usuario"])) {
 
-            if (preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][azA-Z0-9_]+)*[.][a-zAZ]{2,4}$/', $_POST["email_usuario"]))
-            {
+            if (preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][azA-Z0-9_]+)*[.][a-zAZ]{2,4}$/', $_POST["email_usuario"])) {
 
                 $password = crypt($_POST["password_usuario"], '$2a$07$hdgfamkdhdshsjhduaostyexdj$');
                 $tabla    = "usuarios";
@@ -70,14 +66,12 @@ INGRESO DE USUARIO
 
                 $respuesta = UsuariosModelo::mdlMostrarUsuarios($tabla, $item, $valor);
 
-                if (is_array($respuesta) && ($respuesta["email_usuario"] == $valor && $respuesta["password_usuario"] == $password))
-                {
+                if (is_array($respuesta) && ($respuesta["email_usuario"] == $valor && $respuesta["password_usuario"] == $password)) {
 
                     // 1 - Activo
                     // 0 - Inactivo
 
-                    if ($respuesta["estado_usuario"] == 1)
-                    {
+                    if ($respuesta["estado_usuario"] == 1) {
 
                         $_SESSION["session"]        = "ok";
                         $_SESSION["nombre_usuario"] = $respuesta["nombre_usuario"];
@@ -102,19 +96,13 @@ INGRESO DE USUARIO
                        fncSweetAlert("loading", "Ingresando...", "")
                        window.location = "home";
                        </script>';
-                    }
-                    else
-                    {
+                    } else {
                         echo '<div class="alert alert-danger">El usuario no está activado</div>';
                     }
-                }
-                else
-                {
+                } else {
                     echo '<div class="alert alert-danger">Error en usuario o contraseña</div>';
                 }
-            }
-            else
-            {
+            } else {
                 echo '<div class="alert alert-danger">Error al intentar acceder</div>';
             }
         }
@@ -125,15 +113,13 @@ INGRESO DE USUARIO
     public function ctrRenovarPassword()
     {
 
-        if (isset($_POST["resetPassword"]))
-        {
+        if (isset($_POST["resetPassword"])) {
 
             /*=============================================
             Validamos la sintaxis de los campos
             =============================================*/
 
-            if (preg_match('/^[^0-9][.a-zA-Z0-9_]+([.][.a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["resetPassword"]))
-            {
+            if (preg_match('/^[^0-9][.a-zA-Z0-9_]+([.][.a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["resetPassword"])) {
 
                 /*=============================================
                 Preguntamos primero si el usuario está registrado
@@ -150,8 +136,7 @@ INGRESO DE USUARIO
 
                 //return;
 
-                if (is_array($respuesta) && ($respuesta["email_usuario"] == $_POST["resetPassword"]))
-                {
+                if (is_array($respuesta) && ($respuesta["email_usuario"] == $_POST["resetPassword"])) {
 
                     $nuevoPassword = Funciones::genPassword(8);
                     $crypt         = crypt($nuevoPassword, '$2a$07$hdgfamkdhdshsjhduaostyexdj$');
@@ -159,8 +144,7 @@ INGRESO DE USUARIO
 
                     $respuesta2 = UsuariosModelo::mdlRenovarPassword($crypt, $id_usuario);
 
-                    if ($respuesta2 == "ok")
-                    {
+                    if ($respuesta2 == "ok") {
 
                         /*=============================================
                         Enviamos nueva contraseña al correo electrónico
@@ -173,14 +157,13 @@ INGRESO DE USUARIO
                         $email_envio  = "info@controlstock.com.ar";
                         $nombre_envio = "Control Stock";
 
-                        $enviarEmail = PlantillaControlador::enviarEmail($name, $subject, $email, $message, $url, $email_envio, $nombre_envio);
+                        $enviarEmail = PlantillaControlador::enviarEmail("#000000", $name, $subject, $email, $message, $url, $email_envio, $nombre_envio);
 
                         //echo $enviarEmail;
 
                         //return;
 
-                        if ($enviarEmail == "ok")
-                        {
+                        if ($enviarEmail == "ok") {
 
                             echo '<script>
 
@@ -188,9 +171,7 @@ INGRESO DE USUARIO
 
                                     </script>
                                 ';
-                        }
-                        else
-                        {
+                        } else {
 
                             echo '<script>
 
@@ -200,9 +181,7 @@ INGRESO DE USUARIO
                                 ';
                         }
                     }
-                }
-                else
-                {
+                } else {
 
                     echo '<script>
 
@@ -211,9 +190,7 @@ INGRESO DE USUARIO
 							</script>
 						';
                 }
-            }
-            else
-            {
+            } else {
 
                 echo '<script>
 

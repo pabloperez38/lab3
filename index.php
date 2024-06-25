@@ -7,6 +7,7 @@ require_once 'extensiones/vendor/autoload.php';
 require_once 'modelos/funciones.php';
 
 require_once 'controladores/plantilla.controlador.php';
+require_once 'modelos/plantilla.modelo.php';
 
 require_once 'controladores/roles.controlador.php';
 require_once 'modelos/roles.modelo.php';

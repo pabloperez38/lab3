@@ -49,10 +49,11 @@ $url = PlantillaControlador::url();
 
                 if (
                     $paginas[0] == "home" ||
-                    $paginas[0] == "productos" ||                
+                    $paginas[0] == "productos" ||
                     $paginas[0] == "editar-producto" ||
                     $paginas[0] == "usuarios" ||
                     $paginas[0] == "categorias" ||
+                    $paginas[0] == "configuracion" ||
                     $paginas[0] == "salir"
                 ) {
                     include "vistas/modulos/" . $paginas[0] . ".php";
@@ -95,6 +96,7 @@ $url = PlantillaControlador::url();
     <script src="<?php echo $url ?>vistas/js/adminlte.min.js"></script>
     <script src="<?php echo $url ?>vistas/js/productos.js"></script>
     <script src="<?php echo $url ?>vistas/js/usuarios.js"></script>
+    <script src="<?php echo $url ?>vistas/js/configuracion.js"></script>
 
     <script>
         $(function() {
